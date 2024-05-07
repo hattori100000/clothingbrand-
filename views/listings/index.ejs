@@ -1,0 +1,69 @@
+<style>
+  .card{
+border: none !important;
+margin-bottom: 2rem;
+
+}
+.card-img-top{
+border-radius: 1rem;
+width: 100% !important;
+object-fit: cover !important;
+
+}
+.card-body{
+  padding: 0 !important;
+}
+
+.body{
+
+font-family: "Plus Jakarta Sans", sans-serif;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+
+
+}
+.listing-links{
+  text-decoration: none;
+}
+
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+</style>
+
+
+<% layout('/layouts/boilerplate') -%>
+
+<h3>All Listings</h3>
+<FORM>
+  <button><a href="/listings/new">Add</a></button>
+</FORM>
+<div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+
+  <% for(let listing of alllistings) { %>
+    <a href="/listings/<%= listing._id %>"class="listing-links">
+<div class="card" >
+  <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem"/>
+  <div class="card-img-overlay"></div>
+  <div class="card-body">
+    <b><%= listing.title %></b> 
+    <p class="card-text"><%= listing.title%></p>
+    <p class="card-text"> ₹<%= listing.price %></p>
+    <p class="card-text"><%= listing.size %></p>
+  </div>
+</div>
+
+</a>
+<% } %>
+
+</div>
+
+
+
+
